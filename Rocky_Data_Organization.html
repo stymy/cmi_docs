@@ -1,0 +1,157 @@
+<html>
+<head>
+  <style type="text/css">
+    body { background: #F0F0F0; }
+    #editor {
+      width: 590px;
+      margin: auto;
+      margin-top: 60px;
+      color: #333;
+      background-color: #fff;
+      font-size: 13px;
+      line-height: 17px;
+      font-family: 'Helvetica Neue';
+      border: 1px solid #CCC;
+
+      padding-top: 1px; /* important for some reason? */
+      padding-right: 10px;
+      padding-bottom: 8px;
+      padding-left: 0px /* prevents characters from looking chopped off in FF3 */;
+      overflow: hidden;
+      /* blank 1x1 gif, so that IE8 doesn't consider the body transparent */
+      background-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);
+    }
+
+    #editor > div:first-child span {
+      font-size: 140%;
+      font-weight: bold;
+    }
+    #editor > div:first-child {
+      margin-top:10px;
+      margin-bottom:10px;
+    }
+
+    .gutter-noauthor {
+      padding-left: 15px;
+    }
+
+    .inline-img {
+      max-width:400px;
+      max-height:300px;
+      width: expression(this.width > 400 ? 400: true);
+      height: expression(this.height > 300 ? 300: true);
+    }
+
+    .inline-tex{
+      border: 1px solid transparent;
+    }
+
+    .inline-tex:hover {
+      border: 1px dashed red;
+    }
+
+    a.attrlink {
+      /*  font-weight: bold;
+     text-decoration: none;*/
+    }
+
+    .code {
+      font-family: monospace;
+      color: #777;
+      white-space: pre-wrap;
+    }
+
+    .code span {
+      padding-left: 32px;
+      text-indent: -32px;
+      display: inline-block;
+    }
+
+    a.attrlink:hover {
+      text-decoration: underline;
+    }
+
+    .gutter-author-p-17520 { border-left: 5px solid #5888b7; padding-left: 10px; } .author-p-17520 { border-bottom: 2px dotted #5888b7; } .gutter-author-p-109914 { border-left: 5px solid #c6759f; padding-left: 10px; } .author-p-109914 { border-bottom: 2px dotted #c6759f; } .gutter-author-p-20090 { border-left: 5px solid #53af98; padding-left: 10px; } .author-p-20090 { border-bottom: 2px dotted #53af98; } 
+  </style>
+
+</head>
+
+<!-- todo: author colors, sidebar, embedly -->
+
+<body>
+<div id="editor">
+  <div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">Rocky</span><span class="author-p-109914">_</span><span class="author-p-17520">Data</span><span class="author-p-109914">_</span><span class="author-p-17520">Organization</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">All data is housed in&nbsp;</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">/home/data&nbsp;</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">Within this folder there are several relevant directories</span><span class="author-p-17520 i"><i>:</i></span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520 b"><b>Incoming</b></span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">This holds data that is coming in from some other site or location, maybe as an archive. Data in this directory is intended to be here tem</span><span class="author-p-109914">p</span><span class="author-p-17520">orarily with the goal of moving it in a more organized fashion into the Originals directory (see below).</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520 b"><b>Originals</b></span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914">For an Example study you would have:</span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-code1" ><li><span class="author-p-109914 i"><i>/home/data/Originals/Example</i></span><span class="author-p-109914">&nbsp;</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">This is where (big surprise) the original data before any processing is kept.</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-20090 emptyGutter"><span class="author-p-20090 b"><b>PreProc</b></span></div>
+<div class="ace-line gutter-author-p-20090 emptyGutter"><span class="author-p-17520">The </span><span class="author-p-20090">PreProc folder holds all the data preprocessed by C-PAC (or other packages). The folder names</span><span class="author-p-17520"> in this directory</span><span class="author-p-20090"> should correspond to the ones in the Originals. </span><span class="author-p-17520">For example</span><span class="author-p-109914">:</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520 i"><i>/home/data/PreProc/Example</i></span></li></ul></div>
+<div class="ace-line gutter-author-p-20090 emptyGutter"><span class="author-p-20090">This folder will be protected so that only people who is responsible for data preprocessing can write to it. All others can read from it for their analysis.</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-20090 emptyGutter"><span class="author-p-20090 b"><b>Projects</b></span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-code1 lang-txt" spellcheck="false"><li><span class="author-p-109914 i"><i>/home/data/Projects/Example</i></span><span class="author-p-109914">&nbsp;</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-20090">The Projects folder is where users configure and ru</span><span class="author-p-17520">n</span><span class="author-p-20090"> t</span><span class="author-p-17520">heir</span><span class="author-p-20090"> analys</span><span class="author-p-17520">e</span><span class="author-p-20090">s</span><span class="author-p-17520"> (e.g., group analyses with FSL)</span><span class="author-p-20090">. </span><span class="author-p-17520">Typically, the analyses run in this folder will make use of the preprocessed data in a corresponding folder within PreProc. Scripts, </span><span class="author-p-20090">settings, configuration files, temporary files and log files can be saved in the projects folder. </span><span class="author-p-17520">For instance, scripts to organize ones data in Originals annd scripts or configuration files to run the preprocessing in PreProc should be kept within the Projects folder. </span><span class="author-p-20090">Users are reponsible for the hygiene of their projects folder</span><span class="author-p-17520">, and i</span><span class="author-p-20090">ntermedia</span><span class="author-p-17520">te</span><span class="author-p-20090"> files should be deleted after analys</span><span class="author-p-17520">e</span><span class="author-p-20090">s </span><span class="author-p-17520">are</span><span class="author-p-20090"> done.&nbsp;</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-20090 emptyGutter"><span class="author-p-20090 b"><b>PublicProgram</b></span></div>
+<div class="ace-line gutter-author-p-20090 emptyGutter"><span class="author-p-20090">In this folder, there are programs that could be shared by Rocky the server and the cluster, so that we have the same versions of these software on both computation environment. Pros are:&nbsp;</span></div>
+<div class="ace-line gutter-author-p-20090 emptyGutter"><ul class="list-bullet1" ><li><span class="author-p-20090">easy version control</span></li></ul></div>
+<div class="ace-line gutter-author-p-20090 emptyGutter"><ul class="list-bullet1" ><li><span class="author-p-20090">easy management (don&#39;t need to be sudoer to update them).&nbsp;</span></li></ul></div>
+<div class="ace-line gutter-author-p-20090 emptyGutter"><span class="author-p-20090">Cons</span><span class="author-p-109914"> are</span><span class="author-p-20090">:&nbsp;</span></div>
+<div class="ace-line gutter-author-p-20090 emptyGutter"><ul class="list-bullet1" ><li><span class="author-p-20090">the drive is mounted to the clusters as a NSF</span></li></ul></div>
+<div class="ace-line gutter-author-p-20090 emptyGutter"><ul class="list-bullet1" ><li><span class="author-p-20090">might require specific settings of .bashrc file.</span><span class="author-p-109914"> See </span><span class="author-p-109914 attrlink url internal"><a class="attrlink" href="/e0K1Pw8ng6j" title="/e0K1Pw8ng6j">template .bashrc</a></span></li></ul></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520 b"><b>Freesurfer?</b></span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">The Freesurfer folder holds the individual subject output within your individual study directories when running freesurfer&#39;s recon-all.</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-hone1" ><li><span class="author-p-109914 b"><b>CPAC_GUI Template</b></span></li></ul></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914">Following the above organization, your [Example] project should have cpac_gui inputs (kind of) like this:</span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914 attrimg img"><img class="inline-img" data-src="https://photos-6.dropbox.com/t/0/AAC1qw4uC7taqENBS7zXwoigVfQpj65mEqIril-25SKmgg/12/260606285/png/640x480/1/_/0/4/ouput_settings.png/u73xpnytpe6psy1/IyVwpe8CKv/ouput_settings.png" faketext="*" contenteditable="false"><div class="remove-media" contenteditable="false"></div></span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914 b"><b>Subjects Lists</b></span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914">Anatomical File Path Template&nbsp; :&nbsp; /home2/data/Originals/%s/%s/anat/mprage.nii.gz&nbsp;</span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914">Functional File Path Template&nbsp; :&nbsp; /home2/data/Originals/%s/%s/rest.nii.gz&nbsp;</span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914">Subjects to Include&nbsp; :&nbsp; None</span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914">Subjects to Exclude&nbsp; :&nbsp; None&nbsp;</span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914">Sites to Include&nbsp; :&nbsp; [Example]</span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914">Scan Parameters File&nbsp; :&nbsp; None&nbsp;</span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914">Output Directory&nbsp; :&nbsp; /home2/data/Projects/[Example]/settings/subject_lists/</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914 b"><b>&nbsp;Pipelines</b></span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-hthree1" ><li><span class="author-p-109914 b"><b>&nbsp;Computer Settings</b></span></li></ul></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-indent1" ><li><span class="author-p-109914">&nbsp;FSL Path&nbsp; :&nbsp;&nbsp; /usr/share/fsl/5.0</span></li></ul></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-hthree1" ><li><span class="author-p-109914 b"><b>&nbsp;Output Settings</b></span></li></ul></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-indent1" ><li><span class="author-p-109914">Pipeline Name: [Example]_pipeline</span></li></ul></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-indent1" ><li><span class="author-p-109914">Working Directory&nbsp; :&nbsp;&nbsp; /home2/data/Projects/[Example]/working_dir</span></li></ul></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-indent1" ><li><span class="author-p-109914">Crash Log Directory&nbsp; :&nbsp;&nbsp; /home2/data/Projects/[Example]/crash</span></li></ul></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-indent1" ><li><span class="author-p-109914">Output Directory&nbsp; :&nbsp; /home2/data/PreProc/[Example]</span></li></ul></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-indent1" ><li>&nbsp;</li></ul></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+
+</div>
+
+<script type='text/javascript'>
+  function goLive() {
+    if (navigator.onLine) {
+      document.location = 'https://hackpad.com/Mh4iGhYYR3B#Rocky_Data_Organization';
+    } else {
+      setTimeout(goLive, 250);
+    }
+  }
+  goLive();
+</script>
+
+</body>
+</html>
+ 

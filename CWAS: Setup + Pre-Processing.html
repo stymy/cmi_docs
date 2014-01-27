@@ -1,0 +1,230 @@
+<html>
+<head>
+  <style type="text/css">
+    body { background: #F0F0F0; }
+    #editor {
+      width: 590px;
+      margin: auto;
+      margin-top: 60px;
+      color: #333;
+      background-color: #fff;
+      font-size: 13px;
+      line-height: 17px;
+      font-family: 'Helvetica Neue';
+      border: 1px solid #CCC;
+
+      padding-top: 1px; /* important for some reason? */
+      padding-right: 10px;
+      padding-bottom: 8px;
+      padding-left: 0px /* prevents characters from looking chopped off in FF3 */;
+      overflow: hidden;
+      /* blank 1x1 gif, so that IE8 doesn't consider the body transparent */
+      background-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);
+    }
+
+    #editor > div:first-child span {
+      font-size: 140%;
+      font-weight: bold;
+    }
+    #editor > div:first-child {
+      margin-top:10px;
+      margin-bottom:10px;
+    }
+
+    .gutter-noauthor {
+      padding-left: 15px;
+    }
+
+    .inline-img {
+      max-width:400px;
+      max-height:300px;
+      width: expression(this.width > 400 ? 400: true);
+      height: expression(this.height > 300 ? 300: true);
+    }
+
+    .inline-tex{
+      border: 1px solid transparent;
+    }
+
+    .inline-tex:hover {
+      border: 1px dashed red;
+    }
+
+    a.attrlink {
+      /*  font-weight: bold;
+     text-decoration: none;*/
+    }
+
+    .code {
+      font-family: monospace;
+      color: #777;
+      white-space: pre-wrap;
+    }
+
+    .code span {
+      padding-left: 32px;
+      text-indent: -32px;
+      display: inline-block;
+    }
+
+    a.attrlink:hover {
+      text-decoration: underline;
+    }
+
+    .gutter-author-p-17520 { border-left: 5px solid #5888b7; padding-left: 10px; } .author-p-17520 { border-bottom: 2px dotted #5888b7; } 
+  </style>
+
+</head>
+
+<!-- todo: author colors, sidebar, embedly -->
+
+<body>
+<div id="editor">
+  <div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">CWAS: Setup + Pre-Processing</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520 b"><b>Sites</b></span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-bullet1" ><li><span class="author-p-17520 attrlink url"><a class="attrlink" href="http://fcon_1000.projects.nitrc.org/indi/retro/BeijingEOEC.html" title="http://fcon_1000.projects.nitrc.org/indi/retro/BeijingEOEC.html">Beijing Eyes Open Eyes Closed</a></span><span class="author-p-17520"> (</span><span class="author-p-17520 b"><b>BeijingEOEC</b></span><span class="author-p-17520">)</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-bullet1" ><li><span class="author-p-17520 attrlink url"><a class="attrlink" href="http://fcon_1000.projects.nitrc.org/indi/pro/Berlin.html" title="http://fcon_1000.projects.nitrc.org/indi/pro/Berlin.html">Berlin: Mind &amp; Brain</a></span><span class="author-p-17520"> (</span><span class="author-p-17520 b"><b>Berlin</b></span><span class="author-p-17520">)</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-bullet1" ><li><span class="author-p-17520 attrlink url"><a class="attrlink" href="http://fcon_1000.projects.nitrc.org/indi/pro/Quiron-Valencia.html" title="http://fcon_1000.projects.nitrc.org/indi/pro/Quiron-Valencia.html">Quiron-Valencia</a></span><span class="author-p-17520"> (</span><span class="author-p-17520 b"><b>QuironValencia</b></span><span class="author-p-17520">)</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-bullet1" ><li><span class="author-p-17520 attrlink url"><a class="attrlink" href="http://fcon_1000.projects.nitrc.org/indi/pro/nki.html" title="http://fcon_1000.projects.nitrc.org/indi/pro/nki.html">NKI: Rockland Sample</a></span><span class="author-p-17520"> (</span><span class="author-p-17520 b"><b>Rockland</b></span><span class="author-p-17520">)</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-bullet1" ><li><span class="author-p-17520 attrlink url"><a class="attrlink" href="http://fcon_1000.projects.nitrc.org/fcpClassic/FcpTable.html" title="http://fcon_1000.projects.nitrc.org/fcpClassic/FcpTable.html">1000 Functional Connectomes</a></span><span class="author-p-17520"> (</span><span class="author-p-17520 b"><b>FCon1000</b></span><span class="author-p-17520">)</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">&nbsp;</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520 b"><b>Data Organization</b></span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">The originals are located in </span><span class="author-p-17520 i"><i>/home/data/Originals</i></span><span class="author-p-17520">, the preprocessed data will be located in </span><span class="author-p-17520 i"><i>/home/data/PreProc</i></span><span class="author-p-17520">, and scripts and analyses will be located in </span><span class="author-p-17520 i"><i>/home/data/Projects</i></span><span class="author-p-17520">. Within each of these directories look for the names shown in bold above.</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520 b"><b>BeijingEOEC</b></span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Running sample two subjects</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Copy over data download / extraction scripts</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare data_config.py</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare slice_timing.csv</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare config.py</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Create local copy of gray matter mask</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Run cpac_setup</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Run cpac_run</span></li></ul></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520 b"><b>Berlin</b></span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare data_config.py</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Copy over data download / extraction scripts</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Create subject_list.txt</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare slice_timing.csv</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare config.py</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520 i"><i>Create local copy of gray matter mask</i></span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Run cpac_setup</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Run cpac_run</span></li></ul></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520 b"><b>QuironValencia</b></span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-task1" ><li><span class="author-p-17520">Find out if data is interleaved + odd/even</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Copy over data download / extraction scripts</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-task1" ><li><span class="author-p-17520">Prepare data_config.py</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Create subject_list.txt</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-task1" ><li><span class="author-p-17520">Prepare slice_timing.csv</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare config.py</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Create local copy of gray matter mask</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-task1" ><li><span class="author-p-17520">Run cpac_setup</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-task1" ><li><span class="author-p-17520">Run cpac_run</span></li></ul></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">Slice acquisition is sequential ascending. Although it only says ascending in the scan parameters (</span><span class="author-p-17520 url"><a href="http://fcon_1000.projects.nitrc.org/indi/pro/Quiron-Valencia/fMRI_RS.txt" title="http://fcon_1000.projects.nitrc.org/indi/pro/Quiron-Valencia/fMRI_RS.txt">http://fcon_1000.projects.nitrc.org/indi/pro/Quiron-Valencia/fMRI_RS.txt</a></span><span class="author-p-17520 attrlink url"><a class="attrlink" href="http://fcon_1000.projects.nitrc.org/indi/pro/Quiron-Valencia/fMRI_RS.txtbased" title="http://fcon_1000.projects.nitrc.org/indi/pro/Quiron-Valencia/fMRI_RS.txtbased">)</a></span><span class="author-p-17520"> based on philips convention this actually means sequential ascending (</span><span class="author-p-17520 url"><a href="ftp://ricdata.ric.uci.edu/Manuals/fMRI_timing_in_R1_and_R2%20(from%20Philips).pdf" title="ftp://ricdata.ric.uci.edu/Manuals/fMRI_timing_in_R1_and_R2%20(from%20Philips).pdf">ftp://ricdata.ric.uci.edu/Manuals/fMRI_timing_in_R1_and_R2%20(from%20Philips).pdf</a></span><span class="author-p-17520">).</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">Missing anatomical scan for 0020006.</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520 b"><b>Rockland</b></span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare data_config.py</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Copy over data download / extraction scripts</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Create subject_list.txt</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare slice_timing.csv</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare config.py</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Create local copy of gray matter mask</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Run cpac_setup</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-task1" ><li><span class="author-p-17520">Run cpac_run</span></li></ul></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-task1" ><li><span class="author-p-17520">Fix subjects not gathered by cpac_run.py... have anat and rest in different directories</span></li></ul></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">import CPAC_subject_list, re</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">f = open(&#39;../../subject_list.txt&#39;)</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">orig_list = [ x.strip() for x in f.readlines() ]</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">f.close()</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">cpac_list = [ re.match(&#34;.*/([0-9]{7})/.*&#34;, x[&#39;anat&#39;]).group(1) for x in CPAC_subject_list.subjects_list ]</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">missing = [ x for x in orig_list if x not in cpac_list ]</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">f = open(&#39;rerun/subject_list.txt&#39;, &#39;wb&#39;)</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">f.writelines([ x + &#34;\n&#34; for x in missing ])</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">f.close()</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li>&nbsp;</li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">The following subjects had multiple MPRAGEs, below is what MPRAGE was selected.</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">1143655 =&gt; MPRAGE</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">1508861 =&gt; MPRAGE</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">1742775 =&gt; MPRAGE</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">3875444 =&gt; MPRAGEshorter</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">3911767 = &gt; MPRAGE</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">3927656 = &gt; MPRAGE</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">4015919 = &gt; MPRAGE</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">4176156 =&gt; MPRAGE (session_1)</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">4230470 =&gt; MPRAGEshorter</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">9421819 =&gt; MPRAGEshorter</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">For subject 4176156, I did since there were two MPRAGE_1s</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">mv session_2/MPRAGE_1 session_2/archive_MPRAGE_1</span></li></ul></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">I used the script x_soft_link_anat.rb to select the appropriate mprage and soft-link it to a different directory. This allows the use of cpac_setup.py without any problems.</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">Since I messed up on the first run in collecting all the relevant subject directories, I created a second run folder called &#39;rerun&#39;.</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">Subjects with no anatomical scan:</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">1933343</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">2136756</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">2479362</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520 b"><b>FCon1000</b></span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare data_config.py</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Find out the scanners of some sites</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Copy over data download / extraction scripts</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Create subject_list.txt</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare slice_timing.csv</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Prepare config.py</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-taskdone1" ><li><span class="author-p-17520">Create local copy of gray matter mask</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-task1" ><li><span class="author-p-17520">Run cpac_setup</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-task1" ><li><span class="author-p-17520">Run cpac_run</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-task1" ><li><span class="author-p-17520">Figure out problem with new haven b</span></li></ul></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">Don&#39;t know scanner for oulu.</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">Subject&#39;s not used:</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">newark =&gt; sub46570 missing mprage_anonymized.nii.gz</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">ann_arbor_a =&gt; sub56686 missing rest</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">ann_arbor_a =&gt; sub47191 missing rest</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">TODO: add dropped sites from the wiki</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">Dropped Sites:</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">Leipzig =&gt; missing mprage_anonymized.nii.gz</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">New Haven B ? =&gt; problems getting data, not sure why.</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">Several subjects have duplicate ids (need to deal!)</span></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">The code below will find the duplicates and associated input paths:</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">import CPAC_subject_list</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">import collections</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">sublist = CPAC_subject_list.subjects_list</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">subs = [ x[&#39;Subject_id&#39;] for x in sublist ]</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">duplicate_subs = [ x for x,y in collections.Counter(subs).items() if y&gt;1 ]</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li><span class="author-p-17520">overlaps = { s : [ x for i,x in enumerate(sublist) if x[&#39;Subject_id&#39;] == s ] for s in duplicate_subs }</span></li></ul></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><span class="author-p-17520">The gist here is that for almost all overlapping subject ids, this won&#39;t matter since the names of the scan are different. The issue is only for sub68050 who should not be included in the analyses.</span></div>
+<div class="ace-line gutter-author-p-17520 emptyGutter"><ul class="list-code1" ><li>&nbsp;</li></ul></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+
+</div>
+
+<script type='text/javascript'>
+  function goLive() {
+    if (navigator.onLine) {
+      document.location = 'https://hackpad.com/5PgMRfSkHfv#CWAS%3A%20Setup%20%2B%20Pre-Processing';
+    } else {
+      setTimeout(goLive, 250);
+    }
+  }
+  goLive();
+</script>
+
+</body>
+</html>
+ 
