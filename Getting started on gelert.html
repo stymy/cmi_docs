@@ -1,0 +1,111 @@
+<html>
+<head>
+  <style type="text/css">
+    body { background: #F0F0F0; }
+    #editor {
+      width: 590px;
+      margin: auto;
+      margin-top: 60px;
+      color: #333;
+      background-color: #fff;
+      font-size: 13px;
+      line-height: 17px;
+      font-family: 'Helvetica Neue';
+      border: 1px solid #CCC;
+
+      padding-top: 1px; /* important for some reason? */
+      padding-right: 10px;
+      padding-bottom: 8px;
+      padding-left: 0px /* prevents characters from looking chopped off in FF3 */;
+      overflow: hidden;
+      /* blank 1x1 gif, so that IE8 doesn't consider the body transparent */
+      background-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);
+    }
+
+    #editor > div:first-child span {
+      font-size: 140%;
+      font-weight: bold;
+    }
+    #editor > div:first-child {
+      margin-top:10px;
+      margin-bottom:10px;
+    }
+
+    .gutter-noauthor {
+      padding-left: 15px;
+    }
+
+    .inline-img {
+      max-width:400px;
+      max-height:300px;
+      width: expression(this.width > 400 ? 400: true);
+      height: expression(this.height > 300 ? 300: true);
+    }
+
+    .inline-tex{
+      border: 1px solid transparent;
+    }
+
+    .inline-tex:hover {
+      border: 1px dashed red;
+    }
+
+    a.attrlink {
+      /*  font-weight: bold;
+     text-decoration: none;*/
+    }
+
+    .code {
+      font-family: monospace;
+      color: #777;
+      white-space: pre-wrap;
+    }
+
+    .code span {
+      padding-left: 32px;
+      text-indent: -32px;
+      display: inline-block;
+    }
+
+    a.attrlink:hover {
+      text-decoration: underline;
+    }
+
+    .gutter-author-p-109914 { border-left: 5px solid #d98175; padding-left: 10px; } .author-p-109914 { border-bottom: 2px dotted #d98175; } 
+  </style>
+
+</head>
+
+<!-- todo: author colors, sidebar, embedly -->
+
+<body>
+<div id="editor">
+  <div class="ace-line gutter-author-p-109914 emptyGutter"><span class="author-p-109914">Getting started on gelert</span></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ol start="1" class="list-number1"><li><span class="author-p-109914">Create data_config.yml file for your specific project </span><span class="author-p-109914 attrlink url internal"><a class="attrlink" href="/Mh4iGhYYR3B" title="/Mh4iGhYYR3B">Rocky Data Organization</a></span></li></ol></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ol start="2" class="list-number1"><li><span class="author-p-109914">Create pipeline_config.yml file for your specific project </span><span class="author-p-109914 attrlink url internal"><a class="attrlink" href="https://hackpad.com/Mh4iGhYYR3B" title="https://hackpad.com/Mh4iGhYYR3B">Rocky Data Organization</a></span></li></ol></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ol start="3" class="list-number1"><li><span class="author-p-109914">Set up .bashrc file. See: </span><span class="author-p-109914 attrlink url internal"><a class="attrlink" href="/e0K1Pw8ng6j" title="/e0K1Pw8ng6j">template .bashrc</a></span></li></ol></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ol start="4" class="list-number1"><li><span class="author-p-109914">In the folder containing your .yml files, create run_project.py with these commands:</span></li></ol></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-code1 lang-py" spellcheck="false"><li><span class="author-p-109914">import CPAC</span></li></ul></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-code1 lang-py" spellcheck="false"><li><span class="author-p-109914">config_file&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = &#34;pipeline_config.yml&#34;</span></li></ul></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-code1 lang-py" spellcheck="false"><li><span class="author-p-109914">subject_list_file&nbsp;&nbsp; = &#34;data_config.yml&#34;</span></li></ul></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-code1 lang-py" spellcheck="false"><li><span class="author-p-109914">CPAC.pipeline.cpac_runner.run(config_file, subject_list_file, &#34;test&#34;)</span></li></ul></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ol start="5" class="list-number1"><li><span class="author-p-109914">Navigate to gelert and run the python script:</span></li></ol></div>
+<div class="ace-line gutter-author-p-109914 emptyGutter"><ul class="list-code1" ><li><span class="author-p-109914">python run_project.py</span></li></ul></div>
+<div class="ace-line longKeep gutter-noauthor">&nbsp;</div>
+
+</div>
+
+<script type='text/javascript'>
+  function goLive() {
+    if (navigator.onLine) {
+      document.location = 'https://hackpad.com/pEjGRwYoLtN#Getting%20started%20on%20gelert';
+    } else {
+      setTimeout(goLive, 250);
+    }
+  }
+  goLive();
+</script>
+
+</body>
+</html>
+ 
